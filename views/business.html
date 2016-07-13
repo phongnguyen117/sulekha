@@ -1,0 +1,56 @@
+<header class="business-wrap">
+  <div class="container-wrap">
+    <a href="" title="Sulekha" class="bus-logo">Sulekha Chennai</a>
+    <div class="links">
+      <a class="hbtn dow-app">Download App</a>
+    </div>
+  </div>
+</header>
+
+<section class="business-wrap">
+  <div class="business-banner">
+    <div class="container-wrap-banner">
+      <!-- <div class="reg-wrap"> -->
+       <!--  <div class="row">
+          <div class="col-xs-7">
+            <img class="business-banner-image" src="http://lcimg.sulekhalive.com/images/business/banner.jpg">
+            <div class="row">
+              <div class="col-xs-4 text-center">
+                <span class="featur-tit">1. List your business</span>
+              </div>
+              <div class="col-xs-4 text-center">
+                <span class="featur-tit">2. Get matching leads</span>
+              </div>
+              <div class="col-xs-4 text-center">
+                <span class="featur-tit">3. Grow your business</span>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-xs-5" id="claimSearch">
+            <div class="form-wrape">
+
+            </div>
+          </div>
+        </div> -->
+        <div class="container">
+        <form name="registerBusiness" ng-submit="business.submit()" novalidate>
+          <div class="form-group" ng-class="{ 'has-success' : registerBusiness.name.$invalid && !registerBusiness.name.$pristine }">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" placeholder="Email" ng-model="business.information.email" required>
+            <p ng-show="registerBusiness.email.$invalid && !registerBusiness.email.$pristine" class="help-block">Enter a valid email.</p>
+          </div>
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" ng-model="business.information.company_name" class="form-control" placeholder="Company Name">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" ng-model="business.information.phone" class="form-control" placeholder="Phone Number">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

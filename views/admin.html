@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row page-header">
+    <div class="col-xs-12">
+      <h1>Admin</small></h1>
+    </div>
+  </div>
+
+  <!-- <div class="row admin-wrap">
+    <div class="col-xs-1"><strong>Number</strong></div>
+    <div class="col-xs-2"><strong>Email</strong></div>
+    <div class="col-xs-2"><strong>Company Name</strong></div>
+    <div class="col-xs-2"><strong>Phone</strong></div>
+  </div>
+  <div class="row admin-wrap" ng-repeat="business in admin.listBusiness">
+    <div class="col-xs-1">{{$index + 1}}</div>
+    <div class="col-xs-2" editable-text="business.email" >{{business.email}}</div>
+    <div class="col-xs-2" editable-text="business.company_name">{{business.company_name}}</div>
+    <div class="col-xs-2" editable-text="business.phone">{{business.phone}}</div>
+    <div class="col-xs-4">
+    </div>
+  </div> -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-condensed">
+      <tr style="font-weight: bold">
+        <td>Number</td>
+        <td>Email</td>
+        <td>Company Name</td>
+        <td>Phone</td>
+        <td>edit</td>
+      </tr>
+
+      <tr ng-repeat="business in admin.listBusiness">
+        <td>
+          <span>
+            {{ $index + 1}}
+          </span>
+        </td>
+        <td>
+          <span editable-text="business.email" e-name="email" e-form="rowform">
+            {{ business.email || 'empty' }}
+          </span>
+        </td>
+        <td>
+          <span editable-text="business.company_name" e-name="company_name" e-form="rowform">
+            {{ business.company_name || 'empty' }}
+          </span>
+        </td>
+        <td>
+          <span editable-text="business.phone" e-name="phone" e-form="rowform">
+            {{ business.phone || 'empty' }}
+          </span>
+        </td>
+        <td style="white-space: nowrap">
+          <!-- form -->
+          <form editable-form name="rowform" onbeforesave="admin.saveBusiness($data, business.$id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="admin.inserted.email == business.email">
+            <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+              save
+            </button>
+            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+              cancel
+            </button>
+          </form>
+          <div class="buttons" ng-show="!rowform.$visible">
+            <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+            <button class="btn btn-danger" ng-click="admin.removeBusiness($index,business.$id)">del</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <button class="btn btn-default" ng-click="admin.addBusiness()">Add Business</button>
+  </div>
+</div>

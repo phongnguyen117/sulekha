@@ -1,0 +1,278 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #FFFFFF;
+}
+
+.navbar .navbar-header .sulekha-logo {
+  background-image: url(http://lcimg.sulekhalive.com/homepage/images/sulekha-logo-v2.png);
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 117px;
+  display: block;
+  margin-top: 10px;
+  margin-left: 7px;
+}
+
+.icon-os {
+  float: right;
+  margin: 10px 10px 0 20px;
+}
+
+.container-custom {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.nav-custom .head {
+  font-size: 11px;
+  padding: 15px 10px;
+}
+
+.nav-custom .hr {
+  border-right: 1px solid #d9d9d9;
+  height: 14px;
+  position: absolute;
+  right: 0;
+  top: 18px;
+}
+
+.is-image {
+  background-image: url(http://lcimg.sulekhalive.com/homepage/images/ic-hdr-ftr-v2.png);
+  background-repeat: no-repeat;
+  width: 35px;
+  height: 30px;
+  display: inline-block;
+}
+
+.android {
+  background-position: -115px -81px;
+}
+.ios {
+  background-position: -115px -111px;
+}
+
+#banner-wrap {
+  padding-top: 50px;
+}
+.banner {
+  background: url(http://lcimg.sulekhalive.com/homepage/images/960/04.jpg) center center no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 520px;
+  padding-top: 40px;
+  position: relative;
+}
+.search-form {
+  width: 738px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(183,136,21,.8);
+  color: #FFFFFF;
+}
+
+.search-form .search-detail {
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.search-form .search-detail .group-city {
+  width: 170px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.search-form .search-detail .group-city-search {
+  margin-right: 10px;
+  position: relative;
+  width: 415px;
+  z-index: 50;
+  float: right;
+}
+
+.search-form .search-detail .group-city-search .category-search {
+  padding: 10px 30px 10px 10px;
+  width: 100%;
+  background-color: #fff;
+  color: #333;
+  border-radius: 4px;
+  border: 0;
+  font-size: 15px;
+  font-style: italic;
+  height: 37px;
+}
+
+.search-form .search-detail .button-search {
+  margin-right: 0;
+  border: 1px solid #d0a53b;
+  padding-left: 30px;
+  padding-right: 30px;
+  float: right;
+  background-color: #757470;
+  padding: 10px 30px;
+  border-radius: 5px;
+  height: 37px;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.ui-select-container {
+  width: 100%;
+  font-size: 15px;
+}
+
+.category {
+  padding: 0;
+  font-size: 13px;
+  width: 960px;
+  margin: 0 auto;
+  background: rgba(56,27,29,.8);
+  bottom: 40px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  list-style: none;
+}
+
+.category > li {
+  float: left;
+  width: 120px;
+  border-right: 1px solid #251314;
+}
+
+.category > li > a {
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  line-height: 18px;
+  min-height: 80px;
+  padding: 22px 15px;
+  text-decoration: none;
+  white-space: normal;
+  position: relative;
+}
+
+.category > li > a::after {
+  content: '';
+  background: url(http://lcimg.sulekhalive.com/homepage/images/sprite-hp-v5.png) -201px -53px no-repeat;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 27px;
+  right: 6px;
+}
+
+.category > li > a:hover {
+  background-color: #e3deca;
+  color: #381b1d;
+}
+
+.category > li > a:hover:after {
+  background-position: -216px -53px;
+}
+
+.category>li>.menu-container {
+  position: absolute;
+  top: 79px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0;
+  padding: 15px 30px;
+  background: #e3deca;
+  border: 1px solid #381b1f;
+  border-top: 0;
+  z-index: 10;
+}
+
+.category .subtabs {
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+
+.category .subtabs:hover {
+  border-bottom: 3px solid #391b1d;
+}
+
+.category .tabmenu {
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.category .tab-block {
+  overflow: auto;
+}
+
+.category .subtabs .subtab {
+  display: block;
+  padding: 10px 5px;
+  color: #381b1d;
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.category .subtabs .subtab {
+  display: block;
+  padding: 10px 5px;
+  color: #381b1d;
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.category .tab-block .grid-block {
+  width: 25%;
+  float: left;
+  padding-right: 10px;
+}
+
+.category .tab-block .grid-block ul {
+  list-style: none;
+  padding: 0;
+}
+
+.category .tab-block .grid-block .subtab-name {
+  display: inline-block;
+  margin: 3px 0;
+  padding: 2px 0;
+  color: #381b1d;
+  text-decoration: none;
+  list-style: none;
+}
+
+.inactive {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.select2-container .select2-choice {
+  height: 39px;
+  line-height: 39px;
+  background-image: none;
+}
+
+.select2-container .select2-choice .select2-arrow b {
+  background-position: 0 5px;
+}
+
+.select2-container .select2-choice .select2-arrow {
+  border: none;
+  background: none;
+  background-image: none;
+}
+
+.select2-search input {
+  border-radius: 4px;
+}
+
+.select2-dropdown-open .select2-choice {
+  background-color: #FFFFFF;
+}

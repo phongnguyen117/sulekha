@@ -1,0 +1,54 @@
+<section class="session-main-wrap">
+  <section id="main-wrap" class="main-wrap">
+    <section class="filter-blk-wrap">
+      <h2 class="title">User recommended experts in India</h2>
+      <section class="filter-blk">
+        <div class="filter-head clearfix">
+          <label>Filter by:</label>
+          <div class="form-grp">
+            <ui-select ng-model="selected.value">
+              <ui-select-match>
+                  <span ng-bind="$select.selected.name"></span>
+              </ui-select-match>
+              <ui-select-choices repeat="item in (homeCtrl.itemArray | filter: $select.search) track by item.id">
+                  <span ng-bind="item.name"></span>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div>
+
+        <div class="review-blk-cont">
+          <div class="review-blk">
+            <ul id="reviewslist" class="reviewslist">
+              <li class="sc-item" ng-repeat="item in [1,2,3,4,5]">
+                <article>
+                  <strong>George
+                    <span>reviewed</span>
+                    <span class="muted">Sri Jayam Association</span>
+                  </strong>
+
+                  <div class="rev-cont">
+                    <div class="rev-left ">
+                      <div class="user-rate-all"><span class="star-rating-5"></span></div>
+                      <p class="rev-txt">Make your moments unforgetable for lifetime with Ambro Group, The Best or Nothing - Get touch with us @ https://www.facebook.com/ambrogroup/</p>
+                    </div>
+                    <div class="rev-right">
+                      <h3><a href="http://yellowpages.sulekha.com/chandigarh/ambro-group-highway-zirakpur-chandigarh_contact-address#reviewlistings" title="AMBRO GROUP">AMBRO GROUP</a></h3>
+                      <div class="score-blk"><span class="score-rate">0.0</span><span class="muted">Sulekha Score</span></div>
+                      <p class="muted">Event Management Companies</p>
+                    </div>
+                  </div>
+                </article>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <aside class="col-right">
+      <h3 class="sub-head">Advertisement</h3>
+      <div class="fake-iframe"></div>
+    </aside>
+  </section>
+</section>
