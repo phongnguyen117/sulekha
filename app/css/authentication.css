@@ -2,16 +2,15 @@
     background-size: cover;
     min-height: 100vh;
     background: #d2d6de;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .register-business {
     width: 400px;
     background: #FFFFFF;
     padding: 0;
-/*    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);*/
 }
 
 .register-business .header-content {
