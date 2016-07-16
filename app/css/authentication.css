@@ -1,0 +1,63 @@
+.main-register {
+    background-size: cover;
+    min-height: 100vh;
+    background: #d2d6de;
+}
+
+.register-business {
+    width: 400px;
+    background: #FFFFFF;
+    padding: 0;
+/*    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);*/
+}
+
+.register-business .header-content {
+    padding: 15px 20px;
+    background: #FFFFFF;
+}
+
+.register-business .body-content {
+    padding: 15px 20px;
+    position: relative;
+}
+
+.input-icon {
+    position: relative;
+}
+
+.input-icon.right i {
+    right: 8px;
+    float: right;
+}
+
+.input-icon i {
+    color: #999999;
+    display: block;
+    position: absolute;
+    margin: 10px 2px 4px 10px;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.input-icon.right input {
+    padding-left: 12px;
+    padding-right: 33px;
+    height: 40px;
+}
+
+.register-business .input-icon i {
+    margin-top: 12px;
+}
+
+hr {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+    border-color: #e0e0e0;
+}

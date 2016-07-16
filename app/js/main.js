@@ -19,21 +19,21 @@
             templateUrl: './views/home.html',
             controller: 'HomeCtrl as home'
           })
-          .state('business', {
-            url: '/business',
-            templateUrl: './views/business.html',
-            controller: 'BusinessCtrl as business'
+          .state('register', {
+            url: '/register',
+            templateUrl: './views/register.html',
+            controller: 'RegisterCtrl as register'
+          })
+          .state('login', {
+            url: '/login',
+            templateUrl: './views/login.html',
+            controller: 'LoginCtrl as login'
           })
           .state('admin', {
             url: '/admin',
             templateUrl: './views/admin.html',
             controller: 'AdminCtrl as admin'
           });
-        uiSelectConfig.theme = 'select2';
-        uiSelectConfig.resetSearchInput = true;
-        uiSelectConfig.appendToBody = true;
     }])
-    .run(function(editableOptions) {
-      editableOptions.theme = 'bs3';
-    });
+
 })();
