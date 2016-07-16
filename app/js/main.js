@@ -29,10 +29,10 @@
             templateUrl: './views/login.html',
             controller: 'LoginCtrl as login'
           })
-          .state('admin', {
-            url: '/admin',
-            templateUrl: './views/admin.html',
-            controller: 'AdminCtrl as admin'
+          .state('dashboard', {
+            url: '/dashboard',
+            templateUrl: './views/dashboard.html',
+            controller: 'DashboardCtrl as dashboard'
           });
     }])
 

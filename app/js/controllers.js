@@ -6,7 +6,7 @@
         .controller('HomeCtrl', HomeCtrl)
         .controller('RegisterCtrl', RegisterCtrl)
         .controller('LoginCtrl', LoginCtrl)
-        .controller('AdminCtrl', AdminCtrl);
+        .controller('DashboardCtrl', DashboardCtrl);
     HomeCtrl.$inject = ['$state'];
 
     function HomeCtrl($state) {
@@ -64,38 +64,9 @@
         }
     };
 
-    AdminCtrl.$inject = ['$state', '$firebaseArray'];
+    DashboardCtrl.$inject = ['$state', '$firebaseArray'];
 
-    function AdminCtrl($state, $firebaseArray) {
-        var ref = firebase.database().ref().child('business');
-        vm = this;
-        vm.listBusiness = $firebaseArray(ref);
-
-        vm.addBusiness = function() {
-            vm.inserted = {
-                email: '',
-                company_name: '',
-                phone: ''
-            };
-            vm.listBusiness.$add(vm.inserted)
-        };
-
-        vm.removeBusiness = function(index, id) {
-            if (id) {
-                var item = vm.listBusiness.$getRecord(id);
-                vm.listBusiness.$remove(item);
-            }
-        };
-
-        vm.saveBusiness = function(data, id) {
-            if (id) {
-                var item = vm.listBusiness.$getRecord(id);
-                item.email = data.email;
-                item.company_name = data.company_name;
-                item.phone = data.phone;
-                vm.listBusiness.$save(item);
-            }
-        };
+    function DashboardCtrl($state, $firebaseArray) {
 
     };
 }());
