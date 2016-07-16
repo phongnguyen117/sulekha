@@ -40,10 +40,10 @@
                         <span ng-show="registerBusiness.phone.$dirty && registerBusiness.phone.$error.required" class="help-block">Phone is required</span>
                     </div>
                 </div>
-                {{registerBusiness.error}} -aaa
-                <div ng-show="registerBusiness.error" class="form-group" ng-class="{ 'has-error' : registerBusiness.error }">
-                    <div class="input-icon right"><i class="fa fa-phone"></i>
-                        <span class="help-block">{{registerBusiness.error}}</span>
+
+                <div ng-show="register.error" class="form-group" ng-class="{ 'has-error' : register.error }">
+                    <div class="input-icon right">
+                        <span class="help-block">{{register.error}}</span>
                     </div>
                 </div>
                 <hr>

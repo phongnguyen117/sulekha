@@ -3,23 +3,33 @@
         <div class="header-content text-center">
             <h1>Login</h1>
         </div>
-        <form name="registerBusiness" ng-submit="business.logit()" novalidate>
+        <form name="loginBusiness" ng-submit="login.loginBusiness()" novalidate>
             <div class="body-content">
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error' : loginBusiness.email.$invalid && !loginBusiness.email.$pristine }">
                     <div class="input-icon right"><i class="fa fa-envelope"></i>
-                        <input type="email" placeholder="Email address" name="email" class="form-control">
+                        <input type="email" ng-model="login.account.email" placeholder="Email address" name="email" class="form-control"
+                        required>
+                        <span ng-show="loginBusiness.email.$dirty && loginBusiness.email.$error.required" class="help-block">Email is required</span>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error' : loginBusiness.password.$invalid && !loginBusiness.password.$pristine }">
                     <div class="input-icon right"><i class="fa fa-key"></i>
-                        <input id="password" type="password" placeholder="Password" name="password" class="form-control">
+                        <input id="password" ng-model="login.account.password" type="password" placeholder="Password" name="password" class="form-control" required
+                        ng-minlength="6">
+                        <span ng-show="loginBusiness.password.$dirty && loginBusiness.password.$error.required" class="help-block">Password is required</span>
+                    </div>
+                </div>
+
+                <div ng-show="login.error" class="form-group" ng-class="{ 'has-error' : login.error }">
+                    <div class="input-icon right">
+                        <span class="help-block">{{login.error}}</span>
                     </div>
                 </div>
 
                 <hr>
                 <div class="form-group mbn"><a ui-sref="register" class=""><i class="fa fa-chevron-circle-left"></i>&nbsp;
                 Register a new membership</a>
-                    <button type="submit" class="btn btn-info pull-right btn-flat">
+                    <button type="submit" ng-disabled="loginBusiness.$invalid" class="btn btn-info pull-right btn-flat">
                         Submit &nbsp;
                         <i class="fa fa-chevron-circle-right"></i>
                     </button>

@@ -13,34 +13,55 @@
         var vm = this;
     };
 
-    RegisterCtrl.$inject = ['$state', '$firebaseArray', 'Auth'];
+    RegisterCtrl.$inject = ['$state', '$firebaseArray', 'authService'];
 
-    function RegisterCtrl($state, $firebaseArray, Auth) {
-
-        // var list = $firebaseArray(ref);
+    function RegisterCtrl($state, $firebaseArray, authService) {
         vm = this;
         vm.account = {};
 
-        vm.registers = function() {
-            Auth.$createUserWithEmailAndPassword(vm.account.email, vm.account.pass1)
-                .then(function(error, userData) {
-                    console.log(error, 'sdfsdfsdf')
-                    console.log("User created with uid: " + userData.uid);
-                }).catch(function(error) {
-                    console.log('asdfsd');
-                  var errorCode = error.code;
-                  var errorMessage = error.message;
-                  console.log(error)
-                });
+        vm.registers = registers;
 
-            return false;
+        function registers() {
+            var user = {
+                email: vm.account.email,
+                password: vm.account.pass1
+            };
+            return authService.register(user)
+                .then(function(data) {
+                    return $state.go('login')
+                })
+                .then(function() {
+                    console.log('bbb')
+                })
+                .catch(function(error) {
+                    console.log('cccc', error)
+                    vm.error = error.message
+                });
         }
     };
 
-    LoginCtrl.$inject = ['$state', '$firebaseArray'];
+    LoginCtrl.$inject = ['$state', '$firebaseArray', 'authService'];
 
-    function LoginCtrl($state, $firebaseArray) {
-        var ref = firebase.database().ref().child('business');
+    function LoginCtrl($state, $firebaseArray, authService) {
+        vm = this;
+        vm.account = {};
+
+        vm.loginBusiness = loginBusiness;
+
+        function loginBusiness() {
+            var user = {
+                email: vm.account.email,
+                password: vm.account.password
+            };
+            return authService.login(user)
+                .then(function(data) {
+                    console.log(data);
+                    $state.go('admin')
+                })
+                .catch(function(error) {
+                    vm.error = error.message;
+                });
+        }
     };
 
     AdminCtrl.$inject = ['$state', '$firebaseArray'];

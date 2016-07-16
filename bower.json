@@ -16,6 +16,6 @@
     "angular-xeditable": "^0.2.0"
   },
   "devDependencies": {
-    "angularfire": "2.0.0"
+    "angularfire": "2.0.1"
   }
 }
