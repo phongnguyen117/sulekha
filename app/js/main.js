@@ -4,15 +4,13 @@
   angular
     .module('mizzcallApp', [
       'ui.router',
-      'ui.select',
-      'ngSanitize',
       'ui.bootstrap',
       'firebase',
       'xeditable',
       'slick'
     ])
-    .config(['$stateProvider', '$urlRouterProvider', 'uiSelectConfig',
-      function($stateProvider, $urlRouterProvider, uiSelectConfig) {
+    .config(['$stateProvider', '$urlRouterProvider',
+      function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider
           .state('index', {

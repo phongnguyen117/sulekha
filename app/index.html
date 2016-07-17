@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MizzCall</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.min.css">
     <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css">
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
@@ -24,21 +23,18 @@
 <body ng-app="mizzcallApp" class="skin-blue sidebar-mini">
     <div ng-include="'./views/header.html'"></div>
     <div ui-view></div>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular-ui-select/dist/select.min.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
-    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
 
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
     <script src="bower_components/slick-carousel/slick/slick.js"></script>
     <script src="bower_components/angular-slick/dist/slick.js"></script>
-    <script type="text/javascript" src="https://s3.amazonaws.com/plivosdk/web/plivo.min.js"/>
 
     <script>
     // Initialize Firebase
@@ -50,6 +46,7 @@
     };
     firebase.initializeApp(config);
     </script>
+
     <script src="js/main.js"></script>
     <script src="js/services.js"></script>
     <script src="js/directives.js"></script>
