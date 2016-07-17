@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-6 col-xs-offset-3 login-business">
-                <form name="registerBusiness" ng-submit="register.registers()" novalidate>
+                <form name="registerBusiness" ng-submit="register.open()" novalidate>
                     <div class="header-content text-center">
                         <h1>Register</h1>
                     </div>
@@ -97,3 +97,21 @@
     </div>
 </div>
 <div ng-include="'./views/footer.html'"></div>
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header text-center">
+        <h3 class="modal-title">Please verify your mobile number</h3>
+    </div>
+    <div class="modal-body">
+        Verification code has been sent to {{modal.phone}}
+        <h3>Enter verification code</h3>
+        <div class="form-group" ng-class="{ 'has-error' : modal.error}">
+            <input type="text" ng-model="modal.code" placeholder="6 digit verification code"></input>
+            <span ng-show="modal.error" class="help-block">This field is required</span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="modal.ok()">Verify</button>
+        <button class="btn btn-warning" type="button" ng-click="modal.cancel()">Cancel</button>
+    </div>
+</script>

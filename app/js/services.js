@@ -1,51 +1,55 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('mizzcallApp')
-    .factory('authService', authService);
+    angular
+        .module('mizzcallApp')
+        .factory('authService', authService)
+        .factory('firebaseDataService', firebaseDataService);
 
-  authService.$inject = ['$firebaseAuth'];
+    authService.$inject = ['$firebaseAuth'];
 
-  function authService($firebaseAuth) {
-    var firebaseAuthObject = $firebaseAuth();
+    function authService($firebaseAuth) {
+        var firebaseAuthObject = $firebaseAuth();
 
-    var service = {
-      firebaseAuthObject: firebaseAuthObject,
-      register: register,
-      login: login
-      // logout: logout,
-      // isLoggedIn: isLoggedIn,
-      // sendWelcomeEmail: sendWelcomeEmail
-    };
+        var service = {
+            firebaseAuthObject: firebaseAuthObject,
+            register: register,
+            login: login,
+                // logout: logout,
+            isLoggedIn: isLoggedIn
+        };
 
-    return service;
+        return service;
 
-    ////////////
+        ////////////
 
-    function register(user) {
-      return firebaseAuthObject.$createUserWithEmailAndPassword(user.email, user.password);
+        function register(user) {
+            return firebaseAuthObject.$createUserWithEmailAndPassword(user.email, user.password);
+        }
+
+        function login(user) {
+            return firebaseAuthObject.$signInWithEmailAndPassword(user.email, user.password);
+        }
+
+        // function logout() {
+        //   partyService.reset();
+        //   firebaseAuthObject.$signOut();
+        // }
+
+        function isLoggedIn() {
+          return firebaseAuthObject.$getAuth();
+        }
+
     }
 
-    function login(user) {
-      return firebaseAuthObject.$signInWithEmailAndPassword(user.email, user.password);
+    function firebaseDataService() {
+        var root = firebase.database().ref();
+
+        var service = {
+            root: root
+        };
+
+        return service;
     }
-
-    // function logout() {
-    //   partyService.reset();
-    //   firebaseAuthObject.$signOut();
-    // }
-
-    // function isLoggedIn() {
-    //   return firebaseAuthObject.$getAuth();
-    // }
-
-    // function sendWelcomeEmail(emailAddress) {
-    //   firebaseDataService.emails.push({
-    //     emailAddress: emailAddress
-    //   });
-    // }
-
-  }
 
 })();

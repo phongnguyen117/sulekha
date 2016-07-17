@@ -1,16 +1,21 @@
-// (function() {
-//     'use strict';
+(function() {
+    'use strict';
 
-//     angular
-//         .module('mizzcallApp')
-//         .directive('slideit', test);
+    angular
+        .module('mizzcallApp')
+        .directive('addModal', addModal);
 
-//     function test() {
-//         return {
-//             restrict: 'AE',
-//             replace: true,
-//
-//         };
-//     }
+    function addModal() {
+        return {
+            restrict: 'E',
+            templateUrl: 'myModalContent.html',
+            controller: function($scope) {
+                $scope.selected = {
+                    item: $scope.items[0]
+                };
+            }
 
-// })();
+        };
+    }
+
+})();
