@@ -1,6 +1,6 @@
-# angular-firebase
+# Mizz call
 
-First run: 
+First run:
   + npm install
   + bower install
 

@@ -1,10 +1,11 @@
 .main-register {
     background-size: cover;
-    min-height: 100vh;
+    min-height: 500px;
     background-color: #3c8dbc;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .register-business {
@@ -59,4 +60,27 @@ hr {
     border: 0;
     border-top: 1px solid #eeeeee;
     border-color: #e0e0e0;
+}
+
+.login-business {
+    background: #FFFFFF;
+    padding-bottom: 20px;
+}
+
+.listing-register {
+    background-color: #efece9;
+}
+
+.listing-register .listing-wrap {
+    padding: 50px;
+}
+
+.carousel-wrap {
+    background-color: #FFFFFF;
+    padding: 50px;
+    overflow: auto;
+}
+
+.slick-list {
+    padding: 20px 0;
 }

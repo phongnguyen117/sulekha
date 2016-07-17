@@ -1,13 +1,13 @@
 {
-  "name": "angularjs-firebase",
+  "name": "mizzCall",
   "version": "1.0.0",
-  "description": "angular1.x - firebase",
+  "description": "mizzCall",
   "main": "index.js",
   "scripts": {
     "postinstall": "bower install",
      "start": "node index.js"
   },
-  "author": "phongnguyen",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.3.1",

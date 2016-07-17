@@ -2,7 +2,7 @@
     'user strict';
 
     angular
-        .module('sulekhaApp')
+        .module('mizzcallApp')
         .controller('HomeCtrl', HomeCtrl)
         .controller('RegisterCtrl', RegisterCtrl)
         .controller('LoginCtrl', LoginCtrl)
@@ -20,7 +20,6 @@
         vm.account = {};
 
         vm.registers = registers;
-
         function registers() {
             var user = {
                 email: vm.account.email,

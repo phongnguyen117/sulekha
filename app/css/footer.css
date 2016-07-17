@@ -1,97 +1,51 @@
-.s1-footer {
-  width: 100%;
-  background-color: #f7f5ee;
-  border-top: 1px solid #d0d0d0;
-  min-width: 320px;
+footer {
+    background-color: #f8f8f8;
+    padding: 40px 0;
+    font-size: 15px;
 }
 
-.s1-footer .footer-wrap {
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 20px;
-}
-
-.s1-footer .footer-wrap .footer-main {
-  padding: 20px 0 10px;
-  position: relative;
-  width: 100%;
-}
-
-.s1-footer .footer-wrap .footer-main > div {
-  border-bottom: 1px solid #d0d0d0;
-  margin-bottom: 10px;
-  padding-bottom: 5px;
-  overflow: auto;
-}
-
-.s1-footer .footer-wrap .footer-main h4 {
-  font-family: inherit;
-  line-height: normal;
-  margin: 0 0 5px;
-  text-rendering: inherit;
-  color: #343434;
-  font-size: 12px;
-  font-weight: 400;
-}
-
-.s1-footer .footer-wrap .footer-main ul {
-  list-style: none;
-  margin: 0 -7px;
-  padding: 0;
-}
-
-.s1-footer .footer-main ul li {
-  float: left;
-  line-height: 17px;
-}
-
-.s1-footer .footer-main ul li a {
+footer .footer-center p {
   display: inline-block;
-  margin: 0 3px;
-  padding: 3px 5px;
-  font-size: 11px;
-  text-decoration: none;
-  color: #84847a!important;
-  cursor: pointer;
 }
 
-.s1-footer .footer-bottom {
-  padding-bottom: 45px;
-  overflow: auto;
+footer .footer-right, footer .footer-center {
+  margin-top: 20px;
 }
 
-.s1-footer .footer-bottom span {
-  float: left;
-  color: #84847a;
-  font-size: 12px;
+footer .footer-right p {
+  display: inline-block;
 }
 
-.s1-footer .footer-bottom .social-icons {
-  float: right;
+footer .footer-right .footer-company-about {
+  line-height: 20px;
+    color: #92999f;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
 }
 
-.s1-footer .footer-bottom .social-icons a {
-  float: left;
-  height: 26px;
-  margin-right: 5px;
-  width: 26px;
-  background-image: url(http://lcimg.sulekhalive.com/homepage/images/ic-hdr-ftr-v2.png);
-  background-repeat: no-repeat;
+footer .footer-right span {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-.s1-footer .social-icons a.ftr-ic-twitter {
-  background-position: -1px -112px;
+footer .footer-right .footer-icons {
+    margin-top: 25px;
 }
 
-.s1-footer .social-icons a.ftr-ic-facebook {
-  background-position: -30px -112px;
-}
-
-.s1-footer .social-icons a.ftr-ic-pinterest {
-  background-position: -59px -112px;
-}
-
-.s1-footer .social-icons a.ftr-ic-google-plus {
-  background-position: -88px -112px;
+footer .footer-right .footer-icons a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-color: #3c8dbc;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 3px;
+    margin-bottom: 5px;
 }

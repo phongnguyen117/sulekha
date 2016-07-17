@@ -1,70 +1,17 @@
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #333;
-  background-color: #FFFFFF;
-}
-
-.navbar .navbar-header .sulekha-logo {
-  background-image: url(http://lcimg.sulekhalive.com/homepage/images/sulekha-logo-v2.png);
+.navbar .navbar-header .mizzcall-logo {
+  background-image: url(http://www.mizzcall.com/img/logo2.png);
   background-repeat: no-repeat;
-  height: 30px;
-  width: 117px;
+  width: 120px;
   display: block;
-  margin-top: 10px;
-  margin-left: 7px;
 }
-
-.icon-os {
-  float: right;
-  margin: 10px 10px 0 20px;
-}
-
-.container-custom {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.nav-custom .head {
-  font-size: 11px;
-  padding: 15px 10px;
-}
-
-.nav-custom .hr {
-  border-right: 1px solid #d9d9d9;
-  height: 14px;
-  position: absolute;
-  right: 0;
-  top: 18px;
-}
-
-.is-image {
-  background-image: url(http://lcimg.sulekhalive.com/homepage/images/ic-hdr-ftr-v2.png);
-  background-repeat: no-repeat;
-  width: 35px;
-  height: 30px;
-  display: inline-block;
-}
-
-.android {
-  background-position: -115px -81px;
-}
-.ios {
-  background-position: -115px -111px;
+.navbar-brand {
+  padding: 15px 0 0 50px;
 }
 
 #banner-wrap {
   padding-top: 50px;
 }
-.banner {
-  background: url(http://lcimg.sulekhalive.com/homepage/images/960/04.jpg) center center no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 520px;
-  padding-top: 40px;
-  position: relative;
-}
+
 .search-form {
   width: 738px;
   margin: 0 auto;

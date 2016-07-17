@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MizzCall</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MizzCall</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.min.css">
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css">
+    <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
 
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.min.css">
-  <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 
-
-  <link rel="stylesheet" type="text/css" href="css/home.css">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" type="text/css" href="css/authentication.css">
-  <link rel="stylesheet" type="text/css" href="css/footer.css">
-  <link rel="stylesheet" type="text/css" href="css/admin.css">
-  <link rel="stylesheet" type="text/css" href="css/core.css">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/authentication.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="css/core.css">
 </head>
-<body ng-app="sulekhaApp" class="skin-blue sidebar-mini">
 
-  <div ui-view></div>
+<body ng-app="mizzcallApp" class="skin-blue sidebar-mini">
+    <div ng-include="'./views/header.html'"></div>
+    <div ui-view></div>
+    <div ng-include="'./views/footer.html'"></div>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-select/dist/select.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
 
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="bower_components/angular/angular.min.js"></script>
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script type="text/javascript" src="bower_components/angular-ui-select/dist/select.min.js"></script>
-  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/slick-carousel/slick/slick.js"></script>
+    <script src="bower_components/angular-slick/dist/slick.js"></script>
 
-  <script src="bower_components/firebase/firebase.js"></script>
-  <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
-  <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
-
-  <script>
+    <script>
     // Initialize Firebase
     var config = {
-      apiKey: "AIzaSyCmkSgLsIGOK3ZO15bvqVjsbWhOn5GS8RY",
-      authDomain: "sulekha-88a1b.firebaseapp.com",
-      databaseURL: "https://sulekha-88a1b.firebaseio.com",
-      storageBucket: "sulekha-88a1b.appspot.com",
+        apiKey: "AIzaSyCmkSgLsIGOK3ZO15bvqVjsbWhOn5GS8RY",
+        authDomain: "sulekha-88a1b.firebaseapp.com",
+        databaseURL: "https://sulekha-88a1b.firebaseio.com",
+        storageBucket: "sulekha-88a1b.appspot.com",
     };
     firebase.initializeApp(config);
-  </script>
-
-  <script src="js/main.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
-
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/controllers.js"></script>
 
 </body>
+
 </html>

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('sulekhaApp')
+    .module('mizzcallApp')
     .factory('authService', authService);
 
   authService.$inject = ['$firebaseAuth'];

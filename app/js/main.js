@@ -2,13 +2,14 @@
   'use strict';
 
   angular
-    .module('sulekhaApp', [
+    .module('mizzcallApp', [
       'ui.router',
       'ui.select',
       'ngSanitize',
       'ui.bootstrap',
       'firebase',
-      'xeditable'
+      'xeditable',
+      'slick'
     ])
     .config(['$stateProvider', '$urlRouterProvider', 'uiSelectConfig',
       function($stateProvider, $urlRouterProvider, uiSelectConfig) {
