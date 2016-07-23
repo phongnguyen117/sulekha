@@ -11,8 +11,8 @@ var p = plivo.RestAPI({
 });
 
 var config = {
-    databaseURL: "https://sulekha-88a1b.firebaseio.com"
-    // serviceAccount: "Sulekha-47418b322e6a.json",
+    databaseURL: "https://sulekha-88a1b.firebaseio.com",
+    serviceAccount: "Sulekha-47418b322e6a.json"
 };
 
 firebase.initializeApp(config);
