@@ -223,3 +223,103 @@ h1 {
 .select2-dropdown-open .select2-choice {
   background-color: #FFFFFF;
 }
+
+#rootwizard-custom-circle {
+  position: relative;
+  margin-top: 10px;
+}
+
+#rootwizard-custom-circle:before {
+  content: "";
+  height: 3px;
+  width: 100%;
+  background-color: #5CB85C;
+  position: absolute;
+  top: 30px;
+  left: 0;
+}
+
+#rootwizard-custom-circle .navbar {
+  margin-bottom: 35px;
+  min-height: 50px;
+}
+
+#rootwizard-custom-circle li {
+  background-color: #fff;
+  border: 3px solid #6ec06e;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  margin-bottom: 20px;
+  padding-top: 0px;
+  padding-left: 0px;
+  display: inline-block;
+  float: left;
+  list-style: none;
+  margin-left: 28%;
+  text-align: center;
+  position: relative;
+}
+
+#rootwizard-custom-circle li a {
+  font-size: 17px;
+  line-height: 200%;
+}
+
+#rootwizard-custom-circle li a i {
+  color: #6ec06e;
+  top: 2px;
+}
+
+#rootwizard-custom-circle li a p.anchor {
+  position: absolute;
+  top: -35px;
+  left: -130px;
+  width: 300px;
+}
+
+#rootwizard-custom-circle li a p.description {
+  font-size: 13px;
+  position: absolute;
+  left: -130px;
+  width: 300px;
+}
+
+#rootwizard-custom-circle li:first-child {
+  margin-left: 14%;
+}
+
+#rootwizard-custom-circle #bar {
+  height: 14px;
+}
+
+#rootwizard-custom-circle .tab-content .action {
+  padding: 15px 0px;
+  border-top: 1px solid #E6E6E6;
+  margin-top: 60px;
+}
+.require {
+    color: #ff0000;
+}
+
+a {
+  cursor: pointer;
+}
+
+#rootwizard-custom-circle li.active {
+  background-color: #fff;
+  border: 3px solid #dc6767;
+}
+
+#rootwizard-custom-circle li.active a, #rootwizard-custom-circle li.active p, #rootwizard-custom-circle li.active i {
+  color: #dc6767;
+}
+
+.mrx {
+    margin-right: 3px !important;
+}
+
+.mlx {
+    margin-left: 3px !important;
+}

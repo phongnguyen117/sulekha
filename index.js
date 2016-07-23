@@ -1,30 +1,28 @@
-var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
+var firebase = require('firebase');
 
 var plivo = require('plivo');
 var p = plivo.RestAPI({
-  authId: 'MANMQ5NGI3OTVJYTEYYW',
-  authToken: 'MmJmMDhlODNkZmEzODM5MzEzNmQ4YjllNmQ1ZmM2'
+  authId: 'MAODA3YJFMNTEZYMNLY2',
+  authToken: 'NDFiOGUwMWE1YTZjYjhkOTc5ZmZkZDc2OWI1N2My'
 });
 
-
-var params = {
-    'dst' : '+841268462485',
-    'text' : "This randomly generated text can be used in your layout (webdesign , websites, books, posters ... ) for free. This text is entirely free of law. Feel free to link to this site by using the image below or by making a simple text link"
+var config = {
+    databaseURL: "https://sulekha-88a1b.firebaseio.com",
+    serviceAccount: "Sulekha-47418b322e6a.json",
 };
 
-p.send_message(params, function (status, response) {
-    console.log('Status: ', status);
-    console.log('API Response:\n', response);
-    var uuid = response['message_uuid'];
-    var params1 = {'record_id': uuid};
-    p.get_message(params1, function(status, response1){
-      console.log("Your SMS was split into " + response1['units'] + ' units');
-    });
-});
+firebase.initializeApp(config);
 
+var db = firebase.database();
+var users = db.ref().child('users');
+var business = db.ref().child('business');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -38,10 +36,94 @@ app.get('/', function(request, response) {
   response.render('app/index')
 });
 
-app.get('/cool', function(request, response) {
-  response.send(cool());
+var router = express.Router();
+
+router.route('/createcode').post(function(req, res, next) {
+  var email = req.body.email;
+  if(!email) {
+    return res.json({ error: 'missing email' });
+  }
+
+  users.once("value", function(snapshot) {
+
+    var data = snapshot.val();
+    var isExist = false;
+    var isUpdate = false;
+    var id = '';
+
+    for(var index in data) {
+      if(data[index].email === email && data[index].isActive) {
+        isExist = true;
+      } else {
+        if(data[index].email === email) {
+          isUpdate = true;
+          id = index;
+        }
+      }
+    }
+    if (isExist) {
+      isExist = false;
+      res.status(200).send({isError: true, message: 'E-mail address already exists'});
+      return;
+    }
+
+    var code = Math.floor(Math.random()*900000) + 100000;
+
+    if (isUpdate) {
+      users.child(id).update({
+        code: code
+      });
+      res.status(200).json({ message: 'success' });
+      return;
+    }
+
+    users.push({
+      email: email,
+      code: code,
+      isActive: false
+    });
+
+    res.status(200).json({ message: 'success' });
+    next();
+
+  });
+})
+
+router.route('/checkcode').post(function(req, res) {
+  var email = req.body.email;
+  var phone = req.body.phone;
+  var name = req.body.name;
+  var code = req.body.code.toString();
+  var id;
+
+  users.once("value", function(snapshot) {
+    var data = snapshot.val();
+    var isExist = false;
+    for(var index in data) {
+      if(data[index].email === email && data[index].code.toString() === code) {
+        isExist = true;
+        id = index;
+      };
+    }
+    if (isExist) {
+      users.child(id).update({
+        isActive: true
+      });
+      res.status(200).json({ message: 'success' });
+      isExist = false;
+    } else {
+      res.json({ isError: true, message: 'Wrong verification code' });
+    }
+
+  });
+
 });
+
+app.use('/api', router);
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
+
+//Math.floor(Math.random()*90000) + 10000;

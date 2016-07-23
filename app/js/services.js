@@ -15,7 +15,7 @@
             firebaseAuthObject: firebaseAuthObject,
             register: register,
             login: login,
-                // logout: logout,
+            logout: logout,
             isLoggedIn: isLoggedIn
         };
 
@@ -31,10 +31,9 @@
             return firebaseAuthObject.$signInWithEmailAndPassword(user.email, user.password);
         }
 
-        // function logout() {
-        //   partyService.reset();
-        //   firebaseAuthObject.$signOut();
-        // }
+        function logout() {
+          firebaseAuthObject.$signOut();
+        }
 
         function isLoggedIn() {
           return firebaseAuthObject.$getAuth();
@@ -46,7 +45,8 @@
         var root = firebase.database().ref();
 
         var service = {
-            root: root
+            root: root,
+            business: root.child('business')
         };
 
         return service;

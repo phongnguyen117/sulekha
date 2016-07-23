@@ -31,8 +31,27 @@
           .state('dashboard', {
             url: '/dashboard',
             templateUrl: './views/dashboard.html',
-            controller: 'DashboardCtrl as dashboard'
+            controller: 'DashboardCtrl as dashboard',
+            resolve: {
+              currentAuth: ["authService", function(authService) {
+                return authService.firebaseAuthObject.$requireSignIn();
+              }]
+            }
+          })
+          .state('response', {
+            url: '/response',
+            templateUrl: './views/response.html',
+            controller: 'ResponseCtrl as response'
           });
     }])
+    .run(["$rootScope", "$state", function($rootScope, $state) {
+      $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
+        // We can catch the error thrown when the $requireSignIn promise is rejected
+        // and redirect the user back to the home page
+        if (error === "AUTH_REQUIRED") {
+          $state.go("index");
+        }
+      });
+    }]);
 
 })();

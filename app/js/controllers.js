@@ -4,10 +4,12 @@
     angular
         .module('mizzcallApp')
         .controller('HomeCtrl', HomeCtrl)
+        .controller('NavbarController', NavbarController)
         .controller('ModalInstanceCtrl', ModalInstanceCtrl)
         .controller('RegisterCtrl', RegisterCtrl)
         .controller('LoginCtrl', LoginCtrl)
-        .controller('DashboardCtrl', DashboardCtrl);
+        .controller('DashboardCtrl', DashboardCtrl)
+        .controller('ResponseCtrl', ResponseCtrl);
 
     HomeCtrl.$inject = ['$state'];
 
@@ -15,54 +17,88 @@
         var vm = this;
     };
 
-    ModalInstanceCtrl.$inject = ['$scope', '$state', '$uibModalInstance', 'phone'];
+    NavbarController.$inject = ['$state', 'authService'];
 
-    function ModalInstanceCtrl( $scope, $state, $uibModalInstance, phone) {
+    function NavbarController($state, authService) {
+        var vm = this;
+        vm.state = $state.current.name;
+        // console.log($state.current.name);
+    }
+
+    ModalInstanceCtrl.$inject = ['$scope', '$state', '$uibModalInstance', 'account', '$http'];
+
+    function ModalInstanceCtrl( $scope, $state, $uibModalInstance, account, $http) {
         var vm = this;
         vm.error = false;
-        vm.phone = phone;
+        vm.account = account;
         vm.ok = function() {
             if(!vm.code) {
                 vm.error = true;
                 return;
             }
-            $uibModalInstance.close(vm.code);
+            vm.account.code = vm.code;
+            checkCode(vm.account).then(function(data){
+                if (data.data.isError) {
+                    return vm.errorWrongCode = 'Wrong verification code';
+                } else {
+                    $uibModalInstance.close();
+                }
+            });
         };
 
         vm.cancel = function() {
             $uibModalInstance.dismiss('cancel');
         };
+
+        function checkCode(acc) {
+            return $http.post('/api/checkcode', acc);
+        }
     };
 
-    RegisterCtrl.$inject = ['$state', '$firebaseArray', 'authService', '$scope', '$uibModal'];
+    RegisterCtrl.$inject = ['$state', '$firebaseArray', 'authService', '$scope',
+        '$uibModal', '$http', 'firebaseDataService'];
 
-    function RegisterCtrl($state, $firebaseArray, authService, $scope, $uibModal) {
-        vm = this;
+    function RegisterCtrl($state, $firebaseArray, authService, $scope, $uibModal,
+        $http, firebaseDataService) {
+        var vm = this;
         vm.account = {};
 
         vm.registers = registers;
         vm.open = function() {
-
-            var modalInstance = $uibModal.open({
-                animation: vm.animationsEnabled,
-                templateUrl: 'myModalContent.html',
-                controller: 'ModalInstanceCtrl',
-                controllerAs: 'modal',
-                backdrop: false,
-                resolve: {
-                    phone: function() {
-                        return vm.account.phone;
-                    }
+            createCode(vm.account).then(function(data) {
+                if(data.data.isError && data.data.message === 'E-mail address already exists') {
+                    return vm.error = data.data.message;
                 }
-            });
+                var modalInstance = $uibModal.open({
+                    animation: vm.animationsEnabled,
+                    templateUrl: 'myModalContent.html',
+                    controller: 'ModalInstanceCtrl',
+                    controllerAs: 'modal',
+                    backdrop: false,
+                    resolve: {
+                        account: function() {
+                            return vm.account;
+                        }
+                    }
+                });
 
-            modalInstance.result.then(function(code) {
-                vm.selected = code;
-                console.log(code)
-            }, function() {
-                console.log('Modal dismissed at: ' + new Date());
+                modalInstance.result.then(function() {
+                    registers();
+                }, function() {
+                    console.log('Modal dismissed at: ' + new Date());
+                });
+            },function(err) {
+                console.log(err);
             });
         };
+
+        $scope.$watch('register.account.email', function(newVal, oldVal){
+            vm.error= null
+        });
+
+        function createCode(account) {
+            return $http.post('/api/createcode', account);
+        }
 
         function registers() {
             var user = {
@@ -71,10 +107,15 @@
             };
             return authService.register(user)
                 .then(function(data) {
-                    return $state.go('login')
-                })
-                .then(function() {
-                    console.log('bbb')
+                    if(data.uid) {
+                        firebaseDataService.business.child(data.uid).set({
+                            email: vm.account.email,
+                            businessName: vm.account.name,
+                            phone: vm.account.phone
+                        });
+
+                    }
+                    return $state.go('login');
                 })
                 .catch(function(error) {
                     console.log('cccc', error)
@@ -86,7 +127,7 @@
     LoginCtrl.$inject = ['$state', '$firebaseArray', 'authService'];
 
     function LoginCtrl($state, $firebaseArray, authService) {
-        vm = this;
+        var vm = this;
         vm.account = {};
 
         vm.loginBusiness = loginBusiness;
@@ -98,8 +139,7 @@
             };
             return authService.login(user)
                 .then(function(data) {
-                    console.log(data);
-                    $state.go('admin')
+                    $state.go('dashboard')
                 })
                 .catch(function(error) {
                     vm.error = error.message;
@@ -107,9 +147,56 @@
         }
     };
 
-    DashboardCtrl.$inject = ['$state', '$firebaseArray'];
+    DashboardCtrl.$inject = ['$state', '$firebaseObject', '$firebaseArray', 'firebaseDataService','authService', 'currentAuth'];
 
-    function DashboardCtrl($state, $firebaseArray) {
+    function DashboardCtrl($state, $firebaseObject, $firebaseArray, firebaseDataService, authService, currentAuth) {
+        var vm = this;
+        var email = currentAuth.email;
+        var dataService = firebaseDataService.business;
+        var myUserId = currentAuth.uid;
+
+        vm.business = $firebaseObject(dataService.child(myUserId));
+        console.log(vm.business);
+
+        vm.currentStep = 1;
+        vm.widthProgress = '33%'
+        vm.previous = previous;
+        vm.next = next;
+        vm.logout = logout;
+
+
+        function logout() {
+            authService.logout();
+            $state.go('login');
+        }
+
+        function previous() {
+            vm.currentStep = vm.currentStep - 1 ;
+            setWidth();
+        }
+
+        function next() {
+            vm.currentStep = vm.currentStep + 1;
+            setWidth();
+        }
+
+        function setWidth() {
+            switch(vm.currentStep) {
+                case 1:
+                    vm.widthProgress = '33%';
+                    break;
+                case 2:
+                    vm.widthProgress = '66%';
+                    break;
+                case 3:
+                    vm.widthProgress = '100%';
+                    break;
+            }
+        }
+    };
+
+    ResponseCtrl.$inject = ['$state', '$firebaseArray'];
+    function ResponseCtrl($state, $firebaseArray) {
 
     };
 }());

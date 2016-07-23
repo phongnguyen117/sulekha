@@ -1,3 +1,4 @@
+<div ng-include="'./views/header.html'"></div>
 <div class="main-register">
     <div class="container">
         <div class="row">
@@ -103,11 +104,12 @@
         <h3 class="modal-title">Please verify your mobile number</h3>
     </div>
     <div class="modal-body">
-        Verification code has been sent to {{modal.phone}}
+        Verification code has been sent to {{modal.account.phone}}
         <h3>Enter verification code</h3>
-        <div class="form-group" ng-class="{ 'has-error' : modal.error}">
+        <div class="form-group" ng-class="{ 'has-error' : modal.error || modal.errorWrongCode}">
             <input type="text" ng-model="modal.code" placeholder="6 digit verification code"></input>
             <span ng-show="modal.error" class="help-block">This field is required</span>
+            <span ng-show="modal.errorWrongCode" class="help-block">Wrong verification code</span>
         </div>
     </div>
     <div class="modal-footer">

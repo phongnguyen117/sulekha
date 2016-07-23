@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController as navbar">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -11,9 +11,8 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right nav-custom">
-        <li><a ui-sref="login" class="head">Business owners<span class="hr"></span></a></li>
-        <li><a ui-sref="dashboard" class="head">Admin<span class="hr"></span></a></li>
-        <li><a ui-sref="login" class="head">Sign in</a><span class="hr"></span></li>
+        <li><a ui-sref="register" class="head">Business owners<span class="hr"></span></a></li>
+        <li><a ng-show="navbar.state === 'register'" ui-sref="login" class="head">Sign in</a><span class="hr"></span></li>
       </ul>
     </div>
   </div>
